@@ -10,7 +10,7 @@ Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.tar.gz
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	jakarta-ant >= 1.5
 Requires:	jre
-Buildarch:	noarch
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_javalibdir	%{_datadir}/java
