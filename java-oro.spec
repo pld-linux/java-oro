@@ -1,12 +1,12 @@
 Summary:	Full regular expressions API
 Summary(pl):	Pe³ne API do wyra¿eñ regularnych
 Name:		jakarta-oro
-Version:	2.0.7
-Release:	0.1
+Version:	2.0.8
+Release:	1
 License:	Apache License
 Group:		Development/Languages/Java
-Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.tar.gz
-# Source0-md5:	5fdeff2f0386131027ad9ff282061dbf
+Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
+# Source0-md5:	af58ac4811ee023b6211446eb7b7fff2
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	jakarta-ant >= 1.5
 Requires:	jre
