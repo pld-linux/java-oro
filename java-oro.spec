@@ -8,7 +8,7 @@ Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
 # Source0-md5:	af58ac4811ee023b6211446eb7b7fff2
 URL:		http://jakarta.apache.org/oro/
-BuildRequires:	jakarta-ant >= 1.5
+BuildRequires:	ant >= 1.5
 Requires:	jre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
