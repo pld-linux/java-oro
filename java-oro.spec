@@ -9,11 +9,13 @@ Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
 # Source0-md5:	af58ac4811ee023b6211446eb7b7fff2
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
+BuildRequires:	jdk
+BuildRequires:	jpackage-utils
+BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jre
 BuildArch:	noarch
+ExclusiveArch:	i586 i686 pentium3 pentium4 athlon %{x8664} noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_javalibdir	%{_datadir}/java
 
 %description
 The Jakarta-ORO Java classes are a set of text-processing Java classes
@@ -38,6 +40,17 @@ Jakarta przez DAniela Savarese (http://www.savarese.org/), w³a¶ciciela
 praw autorskich do bibliotek ORO. Daniel bêdzie nadal udziela³ siê
 przy rozwoju tych bibliotek w projekcie Jakarta.
 
+%package javadoc
+Summary:	Jakarta-ORO API documentation
+Summary(pl):	Dokumentacja API biblioteki Jakarta-ORO
+Group:		Documentation
+
+%description javadoc
+Jakarta-ORO API documentation.
+
+%description javadoc -l pl
+Dokumentacja API biblioteki Jakarta-ORO.
+
 %prep
 %setup -q
 find . -name "*.jar" -exec rm -f {} \;
@@ -45,19 +58,27 @@ for dir in `find . -type d -name CVS`; do rm -rf $dir; done
 for file in `find . -type f -name .cvsignore`; do rm -rf $file; done
 
 %build
+unset CLASSPATH || :
+export JAVA_HOME="%{java_home}"
 ant -Dfinal.name=oro jar javadocs
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
 
-install -d -m 755 $RPM_BUILD_ROOT%{_javalibdir}
-cp oro.jar $RPM_BUILD_ROOT%{_javalibdir}
-ln -sf oro.jar $RPM_BUILD_ROOT%{_javalibdir}/oro-%{version}.jar
+cp oro.jar $RPM_BUILD_ROOT%{_javadir}/oro-%{version}.jar
+ln -sf oro-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/oro.jar
+
+cp -R docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc COMPILE ISSUES README TODO CHANGES CONTRIBUTORS LICENSE STYLE docs/api
+%doc COMPILE ISSUES README TODO CHANGES CONTRIBUTORS LICENSE STYLE
 %{_javadir}/*.jar
+
+%files javadoc
+%defattr(644,root,root,755)
+%doc %{_javadocdir}/%{name}-%{version}
