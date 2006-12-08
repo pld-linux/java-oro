@@ -2,7 +2,7 @@ Summary:	Full regular expressions API
 Summary(pl):	Pe³ne API do wyra¿eñ regularnych
 Name:		jakarta-oro
 Version:	2.0.8
-Release:	1
+Release:	2
 License:	Apache License
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
@@ -44,6 +44,7 @@ przy rozwoju tych bibliotek w projekcie Jakarta.
 Summary:	Jakarta-ORO API documentation
 Summary(pl):	Dokumentacja API biblioteki Jakarta-ORO
 Group:		Documentation
+Requires:	jpackage-utils
 
 %description javadoc
 Jakarta-ORO API documentation.
@@ -60,7 +61,7 @@ for file in `find . -type f -name .cvsignore`; do rm -rf $file; done
 %build
 unset CLASSPATH || :
 export JAVA_HOME="%{java_home}"
-ant -Dfinal.name=oro jar javadocs
+%ant -Dfinal.name=oro jar javadocs
 
 %install
 rm -rf $RPM_BUILD_ROOT
