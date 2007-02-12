@@ -1,5 +1,5 @@
 Summary:	Full regular expressions API
-Summary(pl):	Pe³ne API do wyra¿eñ regularnych
+Summary(pl.UTF-8):   PeÅ‚ne API do wyraÅ¼eÅ„ regularnych
 Name:		jakarta-oro
 Version:	2.0.8
 Release:	2
@@ -29,27 +29,27 @@ donated to the Jakarta Project by Daniel Savarese
 Daniel will continue to participate in their development under the
 Jakarta Project.
 
-%description -l pl
+%description -l pl.UTF-8
 Klasy Javy Jakarta-ORO to zestaw klas do przetwarzania tekstu
-udostêpniaj±cy wyra¿enia regularne zgodne z Perlem 5, awkowe wyra¿enia
-regularne, wyra¿enia glob oraz klasy narzêdziowe do wykonywania
-podstawieñ, podzia³ów, filtrowania nazw plików itp. Ta biblioteka jest
-nastêpc± bibliotek OROMatcher, AwkTools, PerlTools i TextTools firmy
-ORO Inc. (http://www.oroinc.com/). Zosta³y podarowane projektowi
-Jakarta przez DAniela Savarese (http://www.savarese.org/), w³a¶ciciela
-praw autorskich do bibliotek ORO. Daniel bêdzie nadal udziela³ siê
+udostÄ™pniajÄ…cy wyraÅ¼enia regularne zgodne z Perlem 5, awkowe wyraÅ¼enia
+regularne, wyraÅ¼enia glob oraz klasy narzÄ™dziowe do wykonywania
+podstawieÅ„, podziaÅ‚Ã³w, filtrowania nazw plikÃ³w itp. Ta biblioteka jest
+nastÄ™pcÄ… bibliotek OROMatcher, AwkTools, PerlTools i TextTools firmy
+ORO Inc. (http://www.oroinc.com/). ZostaÅ‚y podarowane projektowi
+Jakarta przez DAniela Savarese (http://www.savarese.org/), wÅ‚aÅ›ciciela
+praw autorskich do bibliotek ORO. Daniel bÄ™dzie nadal udzielaÅ‚ siÄ™
 przy rozwoju tych bibliotek w projekcie Jakarta.
 
 %package javadoc
 Summary:	Jakarta-ORO API documentation
-Summary(pl):	Dokumentacja API biblioteki Jakarta-ORO
+Summary(pl.UTF-8):   Dokumentacja API biblioteki Jakarta-ORO
 Group:		Documentation
 Requires:	jpackage-utils
 
 %description javadoc
 Jakarta-ORO API documentation.
 
-%description javadoc -l pl
+%description javadoc -l pl.UTF-8
 Dokumentacja API biblioteki Jakarta-ORO.
 
 %prep
