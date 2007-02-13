@@ -1,5 +1,5 @@
 Summary:	Full regular expressions API
-Summary(pl.UTF-8):   Pełne API do wyrażeń regularnych
+Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		jakarta-oro
 Version:	2.0.8
 Release:	2
@@ -42,7 +42,7 @@ przy rozwoju tych bibliotek w projekcie Jakarta.
 
 %package javadoc
 Summary:	Jakarta-ORO API documentation
-Summary(pl.UTF-8):   Dokumentacja API biblioteki Jakarta-ORO
+Summary(pl.UTF-8):	Dokumentacja API biblioteki Jakarta-ORO
 Group:		Documentation
 Requires:	jpackage-utils
 
