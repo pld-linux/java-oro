@@ -3,7 +3,7 @@ Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		jakarta-oro
 Version:	2.0.8
-Release:	2
+Release:	3
 License:	Apache License
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
