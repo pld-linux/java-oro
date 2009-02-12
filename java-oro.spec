@@ -1,3 +1,4 @@
+%bcond_without	javadoc		# don't build javadoc
 Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		jakarta-oro
@@ -7,14 +8,13 @@ License:	Apache License
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
 # Source0-md5:	af58ac4811ee023b6211446eb7b7fff2
+Patch0:		%{name}-buildfix.patch
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
-BuildRequires:	jdk
+BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	jre
 BuildArch:	noarch
-ExclusiveArch:	i586 i686 pentium3 pentium4 athlon %{x8664} noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -54,14 +54,18 @@ Dokumentacja API biblioteki Jakarta-ORO.
 
 %prep
 %setup -q
-find . -name "*.jar" -exec rm -f {} \;
-for dir in `find . -type d -name CVS`; do rm -rf $dir; done
-for file in `find . -type f -name .cvsignore`; do rm -rf $file; done
+%patch0 -p1
 
 %build
 unset CLASSPATH || :
-export JAVA_HOME="%{java_home}"
-%ant -Dfinal.name=oro jar javadocs
+
+%ant clean
+%ant -Dfinal.name=oro -Dbuild.compiler=extJavac jar
+
+%if %{with javadoc}
+export SHELL=/bin/sh
+%ant javadocs
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -71,15 +75,22 @@ cp oro.jar $RPM_BUILD_ROOT%{_javadir}/oro-%{version}.jar
 ln -sf oro-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/oro.jar
 
 cp -R docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
+ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post javadoc
+ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 
 %files
 %defattr(644,root,root,755)
 %doc COMPILE ISSUES README TODO CHANGES CONTRIBUTORS LICENSE STYLE
 %{_javadir}/*.jar
 
+%if %{with javadoc}
 %files javadoc
 %defattr(644,root,root,755)
-%doc %{_javadocdir}/%{name}-%{version}
+%{_javadocdir}/%{name}-%{version}
+%ghost %{_javadocdir}/%{name}
+%endif
