@@ -1,0 +1,11 @@
+--- jakarta-oro-2.0.8/build.xml~	2003-12-28 23:00:30.000000000 +0100
++++ jakarta-oro-2.0.8/build.xml	2009-02-12 18:01:00.000000000 +0100
+@@ -159,7 +159,7 @@
+             version="true"
+             windowtitle="${name} ${version} API"
+             doctitle="${name} ${version} API"
+-            header="&lt;a href=&apos;http://jakarta.apache.org/oro/&apos; target=_top&gt;&lt;img src=&apos;{@docroot}/../images/logoSmall.gif&apos; alt=&apos;Jakarta ORO&apos; width=48 height=47 align=center border=0 hspace=1 vspace=1&gt;&lt;/a&gt;"
++            header="&lt;a href=&apos;http://jakarta.apache.org/oro/&apos; target=_top&gt;&lt;img src=&apos;{@docroot}/../images/logoSmall.gif&apos; alt=&apos;Jakarta-ORO&apos; width=48 height=47 align=center border=0 hspace=1 vspace=1&gt;&lt;/a&gt;"
+             bottom="Copyright &#169; ${year} Apache Software Foundation. All Rights Reserved.">
+          </javadoc>
+          <replace file="${javadoc.destdir}/overview-frame.html"
