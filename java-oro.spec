@@ -4,8 +4,8 @@ Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		jakarta-oro
 Version:	2.0.8
 Release:	3
-License:	Apache License
-Group:		Development/Languages/Java
+License:	Apache v2.0
+Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
 # Source0-md5:	af58ac4811ee023b6211446eb7b7fff2
 Patch0:		%{name}-buildfix.patch
