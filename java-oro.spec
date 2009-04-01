@@ -8,7 +8,7 @@
 
 %include        /usr/lib/rpm/macros.java
 
-%define         srcname         commons-net
+%define         srcname         oro
 Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		java-oro
@@ -16,9 +16,9 @@ Version:	2.0.8
 Release:	3
 License:	Apache v2.0
 Group:		Libraries/Java
-Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
+Source0:	http://www.apache.org/dist/jakarta/oro/jakarta-oro-%{version}.zip
 # Source0-md5:	af58ac4811ee023b6211446eb7b7fff2
-Patch0:		%{name}-buildfix.patch
+Patch0:		jakarta-oro-buildfix.patch
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
 %{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
@@ -65,7 +65,7 @@ Jakarta-ORO API documentation.
 Dokumentacja API biblioteki Jakarta-ORO.
 
 %prep
-%setup -q
+%setup -q -n jakarta-oro-%{version}
 %patch0 -p1
 
 %build
