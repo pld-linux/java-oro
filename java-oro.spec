@@ -1,7 +1,17 @@
 %bcond_without	javadoc		# don't build javadoc
+
+%if "%{pld_release}" == "ti"
+%bcond_without java_sun        # build with gcj
+%else
+%bcond_with    java_sun        # build with java-sun
+%endif
+
+%include        /usr/lib/rpm/macros.java
+
+%define         srcname         commons-net
 Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
-Name:		jakarta-oro
+Name:		java-oro
 Version:	2.0.8
 Release:	3
 License:	Apache v2.0
@@ -11,8 +21,10 @@ Source0:	http://www.apache.org/dist/jakarta/oro/%{name}-%{version}.zip
 Patch0:		%{name}-buildfix.patch
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
-BuildRequires:	java-gcj-compat-devel
+%{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires: java-sun}
 BuildRequires:	jpackage-utils
+BuildRequires:  rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,7 +48,7 @@ regularne, wyrażenia glob oraz klasy narzędziowe do wykonywania
 podstawień, podziałów, filtrowania nazw plików itp. Ta biblioteka jest
 następcą bibliotek OROMatcher, AwkTools, PerlTools i TextTools firmy
 ORO Inc. (http://www.oroinc.com/). Zostały podarowane projektowi
-Jakarta przez DAniela Savarese (http://www.savarese.org/), właściciela
+Jakarta przez Daniela Savarese (http://www.savarese.org/), właściciela
 praw autorskich do bibliotek ORO. Daniel będzie nadal udzielał się
 przy rozwoju tych bibliotek w projekcie Jakarta.
 
@@ -60,28 +72,23 @@ Dokumentacja API biblioteki Jakarta-ORO.
 unset CLASSPATH || :
 
 %ant clean
-%ant -Dfinal.name=oro -Dbuild.compiler=extJavac jar
-
-%if %{with javadoc}
-export SHELL=/bin/sh
-%ant javadocs
-%endif
+%ant -Dfinal.name=oro jar %{?with_javadoc:javadocs}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
+install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{srcname}-%{version}}
 
 cp oro.jar $RPM_BUILD_ROOT%{_javadir}/oro-%{version}.jar
 ln -sf oro-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/oro.jar
 
-cp -R docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+cp -R docs/api/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
@@ -91,6 +98,6 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 %if %{with javadoc}
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
 %endif
