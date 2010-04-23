@@ -1,11 +1,5 @@
 %bcond_without	javadoc		# don't build javadoc
 
-%if "%{pld_release}" == "ti"
-%bcond_without java_sun        # build with gcj
-%else
-%bcond_with    java_sun        # build with java-sun
-%endif
-
 %include        /usr/lib/rpm/macros.java
 
 %define         srcname         oro
@@ -21,10 +15,8 @@ Source0:	http://www.apache.org/dist/jakarta/oro/jakarta-oro-%{version}.zip
 Patch0:		jakarta-oro-buildfix.patch
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
-%{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires: java-sun}
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
-BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	jakarta-oro
 Obsoletes:	jakarta-oro
