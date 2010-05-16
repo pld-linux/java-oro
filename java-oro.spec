@@ -18,6 +18,7 @@ BuildRequires:	ant >= 1.5
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	unzip
 Provides:	jakarta-oro
 Obsoletes:	jakarta-oro
 BuildArch:	noarch
