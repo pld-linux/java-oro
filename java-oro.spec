@@ -19,6 +19,7 @@ URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	unzip
 Provides:	jakarta-oro
