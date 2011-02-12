@@ -1,5 +1,7 @@
+#
+# Conditional build:
 %bcond_without	javadoc		# don't build javadoc
-
+#
 %include        /usr/lib/rpm/macros.java
 
 %define         srcname         oro
@@ -89,7 +91,8 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 %files
 %defattr(644,root,root,755)
 %doc COMPILE ISSUES README TODO CHANGES CONTRIBUTORS LICENSE STYLE
-%{_javadir}/*.jar
+%{_javadir}/oro-%{version}.jar
+%{_javadir}/oro.jar
 
 %if %{with javadoc}
 %files javadoc
