@@ -1,15 +1,14 @@
 #
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
-#
-%include        /usr/lib/rpm/macros.java
 
 %define         srcname         oro
+%include        /usr/lib/rpm/macros.java
 Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		java-oro
 Version:	2.0.8
-Release:	4
+Release:	5
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/jakarta-oro-%{version}.zip
@@ -22,7 +21,6 @@ BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 BuildRequires:	unzip
-Provides:	jakarta-oro
 Obsoletes:	jakarta-oro
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
