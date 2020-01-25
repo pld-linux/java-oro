@@ -3,7 +3,6 @@
 %bcond_without	javadoc		# don't build javadoc
 
 %define         srcname         oro
-%include        /usr/lib/rpm/macros.java
 Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		java-oro
