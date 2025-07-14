@@ -62,7 +62,7 @@ Dokumentacja API biblioteki Jakarta-ORO.
 
 %prep
 %setup -q -n jakarta-oro-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 unset CLASSPATH || :
