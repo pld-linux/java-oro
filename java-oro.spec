@@ -2,12 +2,14 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
 
+%{?use_default_jdk:%use_default_jdk 8}
+
 %define         srcname         oro
 Summary:	Full regular expressions API
 Summary(pl.UTF-8):	Pełne API do wyrażeń regularnych
 Name:		java-oro
 Version:	2.0.8
-Release:	6
+Release:	7
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/jakarta/oro/jakarta-oro-%{version}.zip
@@ -15,10 +17,10 @@ Source0:	http://www.apache.org/dist/jakarta/oro/jakarta-oro-%{version}.zip
 Patch0:		jakarta-oro-buildfix.patch
 URL:		http://jakarta.apache.org/oro/
 BuildRequires:	ant >= 1.5
-BuildRequires:	jdk
+%buildrequires_jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 2.021
 BuildRequires:	unzip
 Obsoletes:	jakarta-oro
 BuildArch:	noarch
